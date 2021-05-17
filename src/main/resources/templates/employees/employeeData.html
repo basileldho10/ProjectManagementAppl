@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace ="layouts :: head"></head>
+		
+ <nav th:replace = "layouts :: navbar"></nav>
+
+
+<body>
+
+<div class="container">
+<h3>Employee Directory</h3>
+
+<a class="btn btn-primary" th:href="@{/employee/new}" role="button">New member</a>
+
+   <table class="table table-bordered table-striped">
+     <thead class="thead-dark">
+         <tr>
+           <th> First Name </th>
+           <th> Last Name </th>
+           <th> Email </th>
+           <th> </th>
+         <tr>
+     </thead>
+     
+   <tbody>
+   <tr th:each="ref : ${emp}">
+      <td th:text="${ref.firstName}"></td>
+      <td th:text="${ref.lastName}"></td>
+      <td th:text="${ref.email}"></td>
+        <td>
+        <a th:object="${update}"
+        type="button" th:href="@{/employee/update(id=${ref.employeeId})}" class="btn btn-secondary">Update</a>  
+         <a th:object="${delete}"   
+       role="button" th:href="@{/employee/delete(id=${ref.employeeId})}" class="btn btn-danger">Delete</a>
+       </td>
+    
+    </tr>
+   
+     
+   </tbody>
+   
+   </table>
+</div>
+
+
+
+</body>
+
+
+</html>

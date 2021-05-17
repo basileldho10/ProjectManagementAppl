@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace ="layouts :: head"></head>
+		
+ <nav th:replace = "layouts :: navbar"></nav>
+
+
+<body>
+
+<div class="container">
+<h3>Projects Directory</h3>
+
+
+<a class="btn btn-primary" th:href="@{/projects/new}" role="button">New Project</a>
+
+
+   <table class="table table-bordered table-striped">
+     <thead class="thead-dark">
+         <tr>
+           <th> Project </th>
+           <th> Stage </th>
+         <tr>
+     </thead>
+     
+   <tbody>
+   <tr th:each="ref : ${projects}">
+      <td th:text="${ref.name}"></td>
+      <td th:text="${ref.stage}"></td>
+   </tr>
+     
+   </tbody>
+   
+   </table>
+</div>
+
+
+
+</body>
+
+
+</html>
